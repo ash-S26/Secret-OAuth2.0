@@ -93,7 +93,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://secret-oauth20-production.up.railway.app/auth/google/secrets",
+    callbackURL: "https://secret-oauth20-production.up.railway.app/auth/google/secrets",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   // Callback function sending us various data, profile have email,googleid.
