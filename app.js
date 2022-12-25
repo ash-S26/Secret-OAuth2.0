@@ -36,6 +36,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -52,7 +53,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/userDB", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
 mongoose.set('strictQuery', false);
 
 const userSchema = new mongoose.Schema ({
@@ -231,6 +232,6 @@ app.post("/login", function(req, res){
 
 
 
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("Server started on port 3000.");
 });
